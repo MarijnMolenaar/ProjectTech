@@ -1,18 +1,21 @@
 {
   "name": "myapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Bestand met een aantal standaardwaardes die zorgen dat de boel het goed doet",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "ProjectTech"
+    "url": "https://github.com/MarijnMolenaar/ProjectTech"
   },
   "author": "Marijn Molenaar",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2"
+    "bootstrap": "^5.1.3",
+    "express": "^4.17.2",
+    "pug": "^3.0.2"
   }
 }

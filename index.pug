@@ -1,7 +1,6 @@
 doctype html 
 html 
   head 
-
       meta(name='viewport', content='width=device-width, initial-scale=1')
       link(rel="stylesheet", href="css/style.css")
       title My first pug page!
@@ -34,18 +33,27 @@ body
           
 .container
 
-  h2 Homepagina
+  h1.display-1 Homepagina
 
   p.
-    Welkom! Op deze pagina kan je op een slenne manier auto's bezichtigen en makkelijk een bod uitbrengen
+    Welkom! Op deze pagina kan je op een slenne manier auto's bezichtigen en makkelijk een bod uitbrengen!
+
+  h1#AutoTitel Audi s3
+
+  p#AutoBeschrijving 20000KM
     
-  p.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-    commodo consequat. sehhhhh he ehh
-
-      h2 De main van deze pagina sla bla bla`zwa
-      div#mijndiv zooi in een div
-
       
+  div.mijndiv 
+      img(src="pug.png", alt="auto afbeelding", width="400px") 
+      div.buttons
+        button.Dislike Dislike
+        button.Informatie Informatie
+        button.Like(onclick=enableTekstveld)  Like
+      input(type="text" id="Bod" value="Ik bied..." disabled )  
+
+  div.NavBar
+    button.Nav Dislike
+    button.Nav Informatie
+    button.Nav Like
+
+script(src="mijnbestand.js") 

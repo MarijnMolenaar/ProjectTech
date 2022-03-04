@@ -1,9 +1,11 @@
 doctype html 
 html 
-  head 
+
+// includes/form.pug
+head 
       meta(name='viewport', content='width=device-width, initial-scale=1')
-      link(rel="stylesheet", href="css/style.css")
-      title My first pug page!
+      link(rel="stylesheet", href="style.css")
+      title feksfukesgfuke
       <!-- Latest compiled and minified CSS -->
       link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous")
 <!-- Optional theme -->
@@ -19,28 +21,29 @@ body
       a.navbar-brand(href='/') My Website!
     ul.nav.navbar-nav
       li.active
-        a(href='/') Home
+        a.menu(href='/') Home
       li
-        a(href='/page-1') Page 1
+        a.menu(href='/account.html') Account 
       li
-        a(href='/page-2') Page 2 
+        a.menu(href='/page-2') Contact
         
     ul.nav.navbar-nav.navbar-right
       li
         a(href='/user/me')
           | You are logged in as
           | user@example.com
-          
+
 .container
 
-  h1.display-1 Homepagina
+  h1.display-1 homepage
 
   p.
-    Welkom! Op deze pagina kan je op een slenne manier auto's bezichtigen en makkelijk een bod uitbrengen!
+    Welkom, Op deze pagina kan je op een slenne manier auto's bezichtigen en makkelijk een bod uitbrengen!
 
-  h1#AutoTitel Audi s3
+  h1#AutoTitel Audi s5
 
-  p#AutoBeschrijving 20000KM
+  p#Kilometerstand 20000KM
+  p#Bouwjaar 2016
     
       
   div.mijndiv 
@@ -48,12 +51,17 @@ body
       div.buttons
         button.Dislike Dislike
         button.Informatie Informatie
-        button.Like(onclick=enableTekstveld)  Like
+        button.Like(onclick='enableTekstveld')  Like
       input(type="text" id="Bod" value="Ik bied..." disabled )  
+      input(type="submit" id="Bod")
 
   div.NavBar
     button.Nav Dislike
     button.Nav Informatie
     button.Nav Like
 
+
+
 script(src="mijnbestand.js") 
+
+

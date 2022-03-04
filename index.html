@@ -1,12 +1,12 @@
 <!DOCTYPE html >
-<html> 
-  <head> 
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <title>My first pug page!</title><!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"/>
-  </head>
-</html><!-- Optional theme -->
+<html> </html>
+<!-- includes/form.pug-->
+<head> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="style.css"/>
+  <title>feksfukesgfuke</title><!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"/>
+</head><!-- Optional theme -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous"/><!-- Latest compiled and minified JavaScript -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 <body> 
@@ -17,9 +17,9 @@
   <div class="container-fluid"></div>
   <div class="navbar-header"><a class="navbar-brand" href="/">My Website!</a></div>
   <ul class="nav navbar-nav">
-    <li class="active"><a href="/">Home</a></li>
-    <li><a href="/page-1">Page 1</a></li>
-    <li><a href="/page-2">Page 2 </a></li>
+    <li class="active"><a class="menu" href="/">Home</a></li>
+    <li><a class="menu" href="/account.html">Account </a></li>
+    <li><a class="menu" href="/page-2">Contact</a></li>
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <li><a href="/user/me">
@@ -28,20 +28,22 @@
   </ul>
 </body>
 <div class="container">
-  <h1 class="display-1">Homepagina</h1>
+  <h1 class="display-1">homepage</h1>
   <p>
-    Welkom! Op deze pagina kan je op een slenne manier auto's bezichtigen en makkelijk een bod uitbrengen!
+    Welkom, Op deze pagina kan je op een slenne manier auto's bezichtigen en makkelijk een bod uitbrengen!
     
   </p>
-  <h1 id="AutoTitel">Audi s3</h1>
-  <p id="AutoBeschrijving">20000KM</p>
+  <h1 id="AutoTitel">Audi s5</h1>
+  <p id="Kilometerstand">20000KM</p>
+  <p id="Bouwjaar">2016</p>
   <div class="mijndiv"> <img src="pug.png" alt="auto afbeelding" width="400px"/>
     <div class="buttons">
       <button class="Dislike">Dislike</button>
       <button class="Informatie">Informatie</button>
-      <button class="Like"> Like</button>
+      <button class="Like" onclick="enableTekstveld"> Like</button>
     </div>
     <input type="text" id="Bod" value="Ik bied..." disabled="disabled"/>
+    <input type="submit" id="Bod"/>
   </div>
   <div class="NavBar">
     <button class="Nav">Dislike</button>

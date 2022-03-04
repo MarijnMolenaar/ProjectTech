@@ -1,7 +1,20 @@
-//Routes
-
 const express = require('express')
 const app = express()
+app.set('view engine', 'pug')
+app.use(express.static('style.css'))
+app.use(express.static('public'));
+
+app.get('/index', (req, res) => {
+  res.sendFile('index.html', {root: __dirname})
+})
+
+app.get('/account', (req, res) => {
+  res.sendFile('account.html', {root: __dirname})
+})
+
+app.get('/tags', (req, res) => {
+  res.sendFile('tags.html', {root: __dirname})
+})
 
 app.get('/', (req, res) => {
   res.send('root')
@@ -23,8 +36,8 @@ app.get('/pug', (req, res) => {
   res.send('pug')
 })
 
-app.get('/index.html', (req, res) => {
-  res.send('index.html')
+app.get('/tags', (req, res) => {
+  res.render('tags.html')
 })
 
 app.listen(8080)
@@ -33,3 +46,4 @@ app.use(express.static('content'))
 
 // Javascript logic
 
+const auto = Array("Volvo", "Lotus", "Mclaren", "Ferarri", "Mercedesauto")

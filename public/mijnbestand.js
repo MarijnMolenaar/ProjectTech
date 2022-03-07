@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const dotenv = require('dotenv').config();
 app.set('view engine', 'pug')
 app.use(express.static('style.css'))
 app.use(express.static('public'));
@@ -50,5 +51,12 @@ app.use(express.static('content'))
 
 // Javascript logic
 
+function validateForm() {
+  let x = document.forms["registratieForm"]["naam"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
 
 console.log("JS verbonden, fijne dag!")

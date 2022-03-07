@@ -50,12 +50,5 @@ app.use(express.static('content'))
 
 // Javascript logic
 
-function validateForm() {
-  let x = document.forms["registratieForm"]["naam"].value;
-  if (x == "") {
-    alert("Name must be filled out");
-    return false;
-  }
-}
 
 console.log("JS verbonden, fijne dag!")

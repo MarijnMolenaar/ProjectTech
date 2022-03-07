@@ -19,11 +19,11 @@ body
       a.navbar-brand(href='/') My Website!
     ul.nav.navbar-nav
       li.active
-        a.menu(href='/index.html') Home
+        a.menu(href='/index') Home
       li
-        a.menu(href='/account.html') Account 
+        a.menu(href='/account') Account 
       li
-        a.menu(href='/tags.html') Instellingen
+        a.menu(href='/tags') Instellingen
         
     ul.nav.navbar-nav.navbar-right
       li
@@ -41,8 +41,8 @@ body
   div.mijndiv 
       h2 Naam 
       div.buttons
-      form
-        input(type="text", width='100px')
+      form(action="/index.html" name="registratieForm" method="post" onsubmit="return validateForm()")
+        input(type="text", width='100px' name="naam")
 
         h2 Adres 
          div.buttons
@@ -57,15 +57,10 @@ body
     
         input(type="text", width='100px')
 
-      button.Submit(type="submit")  Opslaan
+      button.Submit(type="submit" value="Submit")  Opslaan
   div.NavBar
     button.Nav Account
     button.Nav Occasions
     button.Nav Chat
 
-script(src="mijnbestand.js") 
-
-script 
-  console.log(auto)
-
-
+script(src="mijnbestand.js")

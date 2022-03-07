@@ -1,10 +1,10 @@
 <!DOCTYPE html >
 <html> </html>
-<!-- includes/form.pug-->
 <head> 
+  <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" href="style.css"/>
-  <title>feksfukesgfuke</title><!-- Latest compiled and minified CSS -->
+  <title>AutoSwiper</title><!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"/>
 </head><!-- Optional theme -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous"/><!-- Latest compiled and minified JavaScript -->
@@ -17,9 +17,9 @@
   <div class="container-fluid"></div>
   <div class="navbar-header"><a class="navbar-brand" href="/">My Website!</a></div>
   <ul class="nav navbar-nav">
-    <li class="active"><a class="menu" href="index.html">Home</a></li>
-    <li><a class="menu" href="account.html">Account </a></li>
-    <li><a class="menu" href="tags.html">Instellingen</a></li>
+    <li class="active"><a class="menu" href="/index">Home</a></li>
+    <li><a class="menu" href="/account">Account </a></li>
+    <li><a class="menu" href="/tags">Instellingen</a></li>
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <li><a href="/user/me">
@@ -37,13 +37,15 @@
   <p id="Kilometerstand">20000KM</p>
   <p id="Bouwjaar">2016</p>
   <div class="mijndiv"> <img src="pug.png" alt="auto afbeelding" width="400px"/>
-    <div class="buttons">
-      <button class="Dislike">Dislike</button>
-      <button class="Informatie">Informatie</button>
-      <button class="Like" onclick="enableTekstveld"> Like</button>
-    </div>
-    <input type="text" id="Bod" value="Ik bied..." disabled="disabled"/>
-    <input type="submit" id="Bod"/>
+    <form action="index.html" method="POST"> 
+      <div class="buttons">
+        <button class="Dislike">Dislike</button>
+        <button class="Informatie">Informatie</button>
+        <button class="Like" onclick="enableTekstveld"> Like</button>
+      </div>
+      <input type="text" id="Bod" value="Ik bied..." disabled="disabled"/>
+      <input type="submit" id="Bod"/>
+    </form>
   </div>
   <div class="NavBar">
     <button class="Nav">Dislike</button>

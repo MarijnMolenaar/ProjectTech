@@ -1,11 +1,10 @@
 doctype html 
 html 
-
-// includes/form.pug
 head 
+      meta(charset="utf-8")
       meta(name='viewport', content='width=device-width, initial-scale=1')
       link(rel="stylesheet", href="style.css")
-      title feksfukesgfuke
+      title AutoSwiper
       <!-- Latest compiled and minified CSS -->
       link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous")
 <!-- Optional theme -->
@@ -21,11 +20,11 @@ body
       a.navbar-brand(href='/') My Website!
     ul.nav.navbar-nav
       li.active
-        a.menu(href='index.html') Home
+        a.menu(href='/index') Home
       li
-        a.menu(href='account.html') Account 
+        a.menu(href='/account') Account 
       li
-        a.menu(href='tags.html') Instellingen
+        a.menu(href='/tags') Instellingen
         
     ul.nav.navbar-nav.navbar-right
       li
@@ -48,20 +47,17 @@ body
       
   div.mijndiv 
       img(src="pug.png", alt="auto afbeelding", width="400px") 
-      div.buttons
-        button.Dislike Dislike
-        button.Informatie Informatie
-        button.Like(onclick='enableTekstveld')  Like
-      input(type="text" id="Bod" value="Ik bied..." disabled )  
-      input(type="submit" id="Bod")
+      form(action="index.html" method="POST") 
+        div.buttons
+          button.Dislike Dislike
+          button.Informatie Informatie
+          button.Like(onclick='enableTekstveld')  Like
+        input(type="text" id="Bod" value="Ik bied..." disabled )  
+        input(type="submit" id="Bod")
 
   div.NavBar
     button.Nav Dislike
     button.Nav Informatie
     button.Nav Like
 
-
-
 script(src="mijnbestand.js") 
-
-

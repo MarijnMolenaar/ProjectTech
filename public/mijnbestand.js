@@ -1,11 +1,40 @@
 const express = require('express')
-const app = express()
 const dotenv = require('dotenv').config();
 app.set('view engine', 'pug')
 app.use(express.static('style.css'))
 app.use(express.static('public'));
+const app = express()
 
-var bodyParser = require('body-parser')
+const { MongoClient } = require('mongodb');
+const { ObjectId } = require('mongodb');
+
+const bodyParser = require('body-parser')
+
+async function main(){
+  const uri = "mongodb+srv://marijn78:marijn78@cluster0.dw0r4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+  const client = new MongoClient(uri);
+
+  try{
+    await client.connect();
+    await listDatabases(client);
+  }catch(e){
+    console.error(e);
+  }finally{
+    await client.close();
+  }
+}
+
+main().catch(console.error);
+
+async function listDatabases(client) {
+  const databasesList = await client.db().admin().listDatabases();
+  console.log("Databases:");
+  databasesList.databases.forEach(db => {
+    console.log('-${db.name}');
+  })
+
+}
 
 app.get('/index', (req, res) => {
   res.sendFile('index.html', {root: __dirname})
@@ -43,7 +72,7 @@ app.get('/tags', (req, res) => {
   res.render('tags.html')
 })
 
-app.listen(8080)
+//app.listen(8080)
 
 app.use(express.static('content'))
 

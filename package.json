@@ -2,7 +2,7 @@
   "name": "myapp",
   "version": "1.0.0",
   "description": "Bestand met een aantal standaardwaardes die zorgen dat de boel het goed doet",
-  "main": "index.js",
+  "main": "mijnbestand.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node mijnbestand.js"
@@ -20,6 +20,7 @@
     "express": "^4.17.3",
     "mongo": "^0.1.0",
     "mongodb": "^4.4.1",
+    "mongoose": "^6.2.4",
     "pug": "^3.0.2"
   },
   "devDependencies": {

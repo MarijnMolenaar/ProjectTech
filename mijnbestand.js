@@ -1,14 +1,36 @@
 const express = require('express')
 const app = express()
-app.set('view engine', 'pug')
+const dotenv = require('dotenv').config();
 app.use(express.static('style.css'))
 app.use(express.static('public'));
+app.set('view engine', 'pug')
 
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const { response } = require('express');
+
+app.use(express.urlencoded({
+    extended: true
+  }))
+
+
+  app.post('/submit-form', (req, res) => {
+    const username = req.body.username
+    //...
+    res.end()
+  })
+
 
 app.get('/index', (req, res) => {
   res.sendFile('index.html', {root: __dirname})
 })
+
+app.get('/submit-index.html', (req, res) => {
+    return response.send(request.query);
+  })
+
+app.get('/', (req, res) => {
+  res.sendFile('index.html', {root: __dirname})
+})  
 
 app.get('/account', (req, res) => {
   res.sendFile('account.html', {root: __dirname})

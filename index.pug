@@ -47,12 +47,12 @@ body
       
   div.mijndiv 
       img(src="pug.png", alt="auto afbeelding", width="400px") 
-      form(action="index.html" method="POST") 
+      form(action="/submitForm" method="post") 
         div.buttons
-          button.Dislike Dislike
+          button.Dislike(name="dislike") Dislike
           button.Informatie Informatie
-          button.Like(onclick='enableTekstveld')  Like
-        input(type="text" id="Bod" value="Ik bied..." disabled )  
+          button.Like(onclick='enableTekstveld' name="like") Like
+        input(type="text" id="Bod" value="Ik bied...")  
         input(type="submit" id="Bod")
 
   div.NavBar

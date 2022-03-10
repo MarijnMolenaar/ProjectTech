@@ -37,13 +37,13 @@
   <p id="Kilometerstand">20000KM</p>
   <p id="Bouwjaar">2016</p>
   <div class="mijndiv"> <img src="pug.png" alt="auto afbeelding" width="400px"/>
-    <form action="index.html" method="POST"> 
+    <form action="/submitForm" method="post"> 
       <div class="buttons">
-        <button class="Dislike">Dislike</button>
+        <button class="Dislike" name="dislike">Dislike</button>
         <button class="Informatie">Informatie</button>
-        <button class="Like" onclick="enableTekstveld"> Like</button>
+        <button class="Like" onclick="enableTekstveld" name="like">Like</button>
       </div>
-      <input type="text" id="Bod" value="Ik bied..." disabled="disabled"/>
+      <input type="text" id="Bod" value="Ik bied..."/>
       <input type="submit" id="Bod"/>
     </form>
   </div>

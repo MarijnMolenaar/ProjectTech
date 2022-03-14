@@ -38,7 +38,9 @@ body
 
   p.
     Welkom, Op deze pagina kan je op een slenne manier auto's bezichtigen en makkelijk een bod uitbrengen!
-
+a(href='/get-data')
+div
+  
   h1#AutoTitel Audi s5
 
   p#Kilometerstand 20000KM
@@ -47,13 +49,13 @@ body
       
   div.mijndiv 
       img(src="pug.png", alt="auto afbeelding", width="400px") 
-      form(action="/submitForm" method="post") 
+      form(action="/" method="post" name="doeBod") 
         div.buttons
           button.Dislike(name="dislike") Dislike
           button.Informatie Informatie
-          button.Like(onclick='enableTekstveld' name="like") Like
-        input(type="text" id="Bod" value="Ik bied...")  
-        input(type="submit" id="Bod")
+          button.Like(type="checkbox" onclick='enableTekstveld' name="like" value="1") Like
+        input(type="text" name="bod" id="bod" value="Ik bied...")  
+        input(type="submit" id="BodKnop")
 
   div.NavBar
     button.Nav Dislike

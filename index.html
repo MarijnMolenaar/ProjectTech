@@ -29,22 +29,21 @@
 </body>
 <div class="container">
   <h1 class="display-1">homepage</h1>
-  <p>
-    Welkom, Op deze pagina kan je op een slenne manier auto's bezichtigen en makkelijk een bod uitbrengen!
-    
-  </p>
+  <p>Welkom, Op deze pagina kan je op een slenne manier auto's bezichtigen en makkelijk een bod uitbrengen!</p>
+</div><a href="/get-data"></a>
+<div>
   <h1 id="AutoTitel">Audi s5</h1>
   <p id="Kilometerstand">20000KM</p>
   <p id="Bouwjaar">2016</p>
   <div class="mijndiv"> <img src="pug.png" alt="auto afbeelding" width="400px"/>
-    <form action="/submitForm" method="post"> 
+    <form action="/" method="post" name="doeBod"> 
       <div class="buttons">
         <button class="Dislike" name="dislike">Dislike</button>
         <button class="Informatie">Informatie</button>
-        <button class="Like" onclick="enableTekstveld" name="like">Like</button>
+        <button class="Like" type="checkbox" onclick="enableTekstveld" name="like" value="1">Like</button>
       </div>
-      <input type="text" id="Bod" value="Ik bied..."/>
-      <input type="submit" id="Bod"/>
+      <input type="text" name="bod" id="bod" value="Ik bied..."/>
+      <input type="submit" name="submit" id="BodKnop" onclick="UpdateEenListing"/>
     </form>
   </div>
   <div class="NavBar">
@@ -53,4 +52,7 @@
     <button class="Nav">Like</button>
   </div>
 </div>
+
+
 <script src="mijnbestand.js"> </script>
+<script src="dboperaties.js"> </script>

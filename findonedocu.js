@@ -1,16 +1,16 @@
-var mongodb=require("mongodb");  
-var MongoClient=mongodb.MongoClient;  
-var url='mongodb://localhost:27017/';  
+const mongodb=require("mongodb");  
+const MongoClient=mongodb.MongoClient;  
+const url='mongodb://localhost:27017/';  
 MongoClient.connect(url, function(error, databases){  
     if(error){  
         throw error;  
   
     }  
-    var nodtst = databases.db("navigcollection");  
+    const nodtst = databases.db("navigcollection");  
     
-    nodtst.collection("pract").findOne({name:'Shivani'}, function(err, result) {  
+    nodtst.collection("pract").findOne({name:'Audi S3'}, function(err, result) {  
         if (err) throw err;  
-        console.log("Records:....."+result.name + ", " + result.address + ", " + result.orderdata);  
+        console.log("Records:....."+result.name + ", " + result.bouwjaar + ", " + result.kilometerstand);  
         databases.close();   
     })  
 })  

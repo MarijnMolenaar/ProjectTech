@@ -9,11 +9,12 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/pract');
 const bodyParser = require('body-parser');
 const { response } = require('express');
-
+//const { default: mongoose } = require('mongoose');
 //const mongo = require('mongodb');
+
 require('mongodb').MongoClient;
 const assert = require('assert'); 
-//const { default: mongoose } = require('mongoose');
+
 const { stringify } = require('querystring');
 
 const url='mongodb://localhost:27017/autos';
@@ -32,12 +33,12 @@ const port = process.env.PORT || 3000
 
 // const autoData = mongoose.model('autoData', listingData);
 
-// app.get('/get-data', function (req, res, next){
-//   autoData.find()
-//     .then(function(doc){
-//       res.render('index', {items: doc});
-//     })
-// })
+app.get('/get-data', function (req, res, next){
+  autoData.find()
+    .then(function(doc){
+      res.render('index', {items: doc});
+    })
+})
 
 app.get('/update', (req, res) => {
 
@@ -130,17 +131,5 @@ app.get('/tags', (req, res) => {
 app.listen(3000)
 
 app.use(express.static('content'))
-
-
-
-// Javascript logic
-
-function validateForm() {
-  let x = document.forms["registratieForm"]["naam"].value;
-  if (x == "") {
-    alert("Name must be filled out");
-    return false;
-  }
-}
 
 console.log("JS verbonden, fijne dag!")

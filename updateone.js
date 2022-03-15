@@ -37,3 +37,5 @@ nodtst.collection("pract").updateOne(whereClause,newvalues,function(err,res){
 //     console.log(res.result + "document updated");  
 // });  
 // });  
+
+// bron: https://www.c-sharpcorner.com/article/crud-operation-in-mongodb-using-node-js-vs-codemongodb-compass/

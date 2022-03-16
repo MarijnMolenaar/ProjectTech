@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const dotenv = require('dotenv').config();
 app.use(express.static('style.css'))
+app.use(express.static('tinderesque.css'))
 app.use(express.static('public'));
 app.set('view engine', 'pug')
 
@@ -131,5 +132,10 @@ app.get('/tags', (req, res) => {
 app.listen(3000)
 
 app.use(express.static('content'))
+
+
+// tinder-card javascript
+
+
 
 console.log("JS verbonden, fijne dag!")

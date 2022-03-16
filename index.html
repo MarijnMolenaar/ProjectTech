@@ -3,7 +3,9 @@
 <head> 
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="tinderesque.css"/>
   <link rel="stylesheet" href="style.css"/>
+  
   <title>AutoSwiper</title><!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"/>
 </head><!-- Optional theme -->
@@ -53,6 +55,72 @@
   </div>
 </div>
 
+<h2>Using buttons to vote yes or no</h2>
+
+<div class="floaty">
+  <div class="cardcontainer">
+    <div class="card">Card</div>
+    <button class="but-nope">X</button>
+    <button class="but-yay">✔</button>
+  </div>
+
+  <div class="cardcontainer">
+    <div class="card">Card</div>
+    <button class="but-nope">X</button>
+    <button class="but-yay">✔</button>
+  </div>
+</div>
+
+<script src="tinderesque.js"></script>
+<script>
+
+  document.body.addEventListener('nopecard', function(ev) {
+     console.log(ev.detail);
+  });
+  document.body.addEventListener('yepcard', function(ev) {
+     console.log(ev.detail);
+  });
+  document.body.addEventListener('deckempty', function(ev) {
+     console.log(ev.detail);
+  });
+  document.body.addEventListener('cardchosen', function(ev) {
+     console.log(ev.detail);
+  });
+
+
+  document.body.addEventListener('nopecard', function(ev) {
+    var container = ev.detail.container;
+    var label = container.querySelector('.nopes');
+    if (label) {
+      var nopes = +container.nopes || 0;
+      nopes++;
+      container.nopes = nopes;
+      label.innerHTML = container.nopes;
+    }
+  });
+
+  document.body.addEventListener('yepcard', function(ev) {
+    var container = ev.detail.container;
+    var label = container.querySelector('.yays');
+    if (label) {
+      var yeps = +container.yeps || 0;
+      yeps++;
+      container.yeps = yeps;
+      label.innerHTML = container.yeps;
+    }
+  });
+
+  document.body.addEventListener('deckempty', function(ev) {
+    var container = ev.detail.container;
+    var list = container.querySelector('.cardlist');
+    var out = '<li class="card current">#1</li>';
+    for (var i = 2; i < 6; i++) {
+      out += '<li class="card">#' + i + '</li>';
+    }
+    list.innerHTML = out;
+  });
+
+</script>
 
 <script src="mijnbestand.js"> </script>
-<script src="dboperaties.js"> </script>
+<script src="tinderesque.js"> </script>

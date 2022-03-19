@@ -10,10 +10,13 @@ Het project runt op node.js en maakt onder andere gebruik van Mongodb en Pug.
 
 Je kunt aan de slag met dit project door deze repo te clonen en te openen op jouw machine. 
 
-~ `git clone https://github.com/MarijnMolenaar/ProjectTech.git`
+`git clone https://github.com/MarijnMolenaar/ProjectTech.git`
 
-Installeer vervolgens node in een terminal of andere cli:
+Installeer vervolgens npm en de pug template engine:
 
+`npm install`
 
+`npm install pug`
 
 Zoek contact op met Marijn Molenaar over vragen over dit project!
+

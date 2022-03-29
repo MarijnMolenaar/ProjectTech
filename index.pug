@@ -1,65 +1,114 @@
-doctype html 
-html 
-head 
-      meta(charset="utf-8")
-      meta(name='viewport', content='width=device-width, initial-scale=1')
-      link(rel="stylesheet", href="style.css")
-      title AutoSwiper
-      <!-- Latest compiled and minified CSS -->
-      link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous")
-<!-- Optional theme -->
-      link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous")
-<!-- Latest compiled and minified JavaScript -->
-      script(src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous")
-body 
-    h1 AutoSwiper
-    main 
-      nav.navbar.navbar-inverse
-    .container-fluid
-    .navbar-header
-      a.navbar-brand(href='/') My Website!
-    ul.nav.navbar-nav
-      li.active
-        a.menu(href='/index') Home
-      li
-        a.menu(href='/account') Account 
-      li
-        a.menu(href='/tags') Instellingen
-        
-    ul.nav.navbar-nav.navbar-right
-      li
-        a(href='/user/me')
-          | You are logged in as
-          | user@example.com
-
+doctype html
+html
+head
+  meta(charset="utf-8")
+  meta(name="viewport", content="width=device-width, initial-scale=1")
+  link(rel="stylesheet", href="tinderesque.css")
+  link(rel="stylesheet", href="style.css")
+  title AutoSwiper
+  // Latest compiled and minified CSS
+  link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css", integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu", crossorigin="anonymous")
+// Optional theme
+link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css", integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ", crossorigin="anonymous")
+// Latest compiled and minified JavaScript
+script(src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js", integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd", crossorigin="anonymous")
+body
+  h1 AutoSwiper
+  main
+    nav.navbar.navbar-inverse
+  .container-fluid
+  .navbar-header
+    a.navbar-brand(href="/") My Website!
+  ul.nav.navbar-nav
+    li.active
+      a.menu(href="/index") Home
+    li
+      a.menu(href="/account") Account 
+    li
+      a.menu(href="/tags") Instellingen
+  ul.nav.navbar-nav.navbar-right
+    li
+      a(href="/user/me")
+        | You are logged in as
+        | user@example.com
 .container
-
   h1.display-1 homepage
-
-  p.
-    Welkom, Op deze pagina kan je op een slenne manier auto's bezichtigen en makkelijk een bod uitbrengen!
-a(href='/get-data')
+  p Welkom, Op deze pagina kan je op een slenne manier auto&apos;s bezichtigen en makkelijk een bod uitbrengen!
+a(href="/get-data")
 div
+      .mijndiv
+        form(action="/", method="post", name="doeBod")
+          .buttons
+            .cardcontainer
+              .card Card
+              button.but-nope(type="button") X
+              button#like.Like(name="like", value="1", type="button", onclick="knoppenAanzetten(like)") ✔
+          input#bod(type="text", name="bod", disabled="disabled", value="Ik bied...")
+          input#BodKnop(type="submit", name="submit", disabled="disabled")
+      .NavBar
+        button.Nav Dislike
+        button.Nav Informatie
+        button.Nav Like
+script(src="tinderesque.js")
+script.
+  document.body.addEventListener('nopecard', function(ev) {
+  console.log(ev.detail);
+  });
+  document.body.addEventListener('yepcard', function(ev) {
+  console.log(ev.detail);
+  });
+  document.body.addEventListener('deckempty', function(ev) {
+  console.log(ev.detail);
+  });
+  document.body.addEventListener('cardchosen', function(ev) {
+  console.log(ev.detail);
+  });
   
-  h1#AutoTitel Audi s5
-
-  p#Kilometerstand 20000KM
-  p#Bouwjaar 2016
-    
-      
-  div.mijndiv 
-      img(src="pug.png", alt="auto afbeelding", width="400px") 
-      form(action="/" method="post" name="doeBod") 
-        div.buttons
-          button.Dislike(name="dislike") Dislike
-          button.Informatie Informatie
-          button.Like(type="checkbox" onclick='enableTekstveld' name="like" value="1") Like
-        input(type="text" name="bod" id="bod" value="Ik bied...")  
-        input(type="submit" id="BodKnop")
-
-  div.NavBar
-    button.Nav Dislike
-    button.Nav Informatie
-    button.Nav Like
-
-script(src="mijnbestand.js") 
+  
+  document.body.addEventListener('nopecard', function(ev) {
+  var container = ev.detail.container;
+  var label = container.querySelector('.nopes');
+  if (label) {
+  var nopes = +container.nopes || 0;
+  nopes++;
+  container.nopes = nopes;
+  label.innerHTML = container.nopes;
+  }
+  });
+  
+  document.body.addEventListener('yepcard', function(ev) {
+  var container = ev.detail.container;
+  var label = container.querySelector('.yays');
+  if (label) {
+  var yeps = +container.yeps || 0;
+  yeps++;
+  container.yeps = yeps;
+  label.innerHTML = container.yeps;
+  }
+  });
+  
+  document.body.addEventListener('deckempty', function(ev) {
+  var container = ev.detail.container;
+  var list = container.querySelector('.cardlist');
+  var out = '<li class="card current">#1</li>';
+  for (var i = 2; i < 6; i++) {
+  out += '<li class="card">#' + i + '</li>';
+  }
+  list.innerHTML = out;
+  });
+  
+  
+  
+  //Luistert naar de knoppen
+  const likeKnop = document.getElementById("like");
+  const bodKnop = document.getElementById("bod");
+  const submitKnop = document.getElementById("BodKnop");
+  
+  function knoppenAanzetten(like) {
+  document.getElementById("bod").disabled = false;
+  document.getElementById("BodKnop").disabled = false;
+  
+  }
+script(src="mijnbestand.js").
+script(src="tinderesque.js").
+  

@@ -10,40 +10,26 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/pract');
 const bodyParser = require('body-parser');
 const { response } = require('express');
-//const { default: mongoose } = require('mongoose');
-//const mongo = require('mongodb');
 
 require('mongodb').MongoClient;
 const assert = require('assert'); 
 
 const { stringify } = require('querystring');
 
-const url='mongodb://localhost:27017/autos';
+
 
 const port = process.env.PORT || 3000
 
-// const schema = mongoose.Schema;
 
-// const listingData = new schema({
-//   name: {type: String},
-//   bouwjaar: {type: String},
-//   kilometerstand: {type: String},
-//   vraagprijs: {type: String},
-//   bod: {type: String}
-// }, {collection: 'autoData'});
 
-// const autoData = mongoose.model('autoData', listingData);
-
-app.get('/get-data', function (req, res, next){
-  autoData.find()
-    .then(function(doc){
-      res.render('index', {items: doc});
-    })
+app.get('/index', async (req, res) => {
+  try {
+     const autos = await UserModel.find()
+     res.render('index', { x: autos })
+  } catch (error) {
+     res.status(404).send('Oeps, er is wat misgegaan!')
+  }
 })
-
-app.get('/update', (req, res) => {
-
-}) 
 
 app.use(express.urlencoded({
     extended: true
@@ -71,24 +57,6 @@ app.post('/', (req,res) => {
   })
 
 
-  // app.get('/index', (req, res) => {
-
-  //   for(i = 0; i < totalpract.length; i++) {  
-  //   let data = (pract.name + ", " + pract.bouwjaar + ", " + pract.kilometerstand + ", " + pract.bouwjaar + ", ");  
-  // }  
-
-  // console.log(dataUitDatabase)
-
-  //   res.sendFile('index.html', {
-  //     root: __dirname,
-  //     dataUitDatabase: data
-  //   })
-  // })
-
-
-
-  
-
 app.get('/submit-index.html', (req, res) => {
     return response.send(request.query);
   })
@@ -109,33 +77,51 @@ app.get('/', (req, res) => {
   res.send('root')
 })
 
-app.get('/users', (req, res) => {
-  res.send('users')
-})
-
-app.get('/contact', (req, res) => {
-  res.send('contact')
-})
-
-app.get('/home', (req, res) => {
-  res.send('home')
-})
-
-app.get('/pug', (req, res) => {
-  res.send('pug')
-})
 
 app.get('/tags', (req, res) => {
   res.render('tags.html')
 })
 
-app.listen(3000)
 
 app.use(express.static('content'))
 
-
-// tinder-card javascript
-
-
-
 console.log("JS verbonden, fijne dag!")
+
+// arcive
+
+
+// const schema = mongoose.Schema;
+
+// const listingData = new schema({
+//   name: {type: String},
+//   bouwjaar: {type: String},
+//   kilometerstand: {type: String},
+//   vraagprijs: {type: String},
+//   bod: {type: String}
+// }, {collection: 'autoData'});
+
+// const autoData = mongoose.model('autoData', listingData);
+
+
+app.listen(3000)
+
+
+
+  // app.get('/index', (req, res) => {
+
+  //   for(i = 0; i < totalpract.length; i++) {  
+  //   let data = (pract.name + ", " + pract.bouwjaar + ", " + pract.kilometerstand + ", " + pract.bouwjaar + ", ");  
+  // }  
+
+  // console.log(dataUitDatabase)
+
+  //   res.sendFile('index.html', {
+  //     root: __dirname,
+  //     dataUitDatabase: data
+  //   })
+  // })
+
+
+
+  //const { default: mongoose } = require('mongoose');
+//const mongo = require('mongodb');

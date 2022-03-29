@@ -1,19 +1,21 @@
-<!DOCTYPE html >
-<html> </html>
-<head> 
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="tinderesque.css"/>
-  <link rel="stylesheet" href="style.css"/>
-  
-  <title>AutoSwiper</title><!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"/>
-</head><!-- Optional theme -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous"/><!-- Latest compiled and minified JavaScript -->
+<!DOCTYPE html>
+<html></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="tinderesque.css">
+  <link rel="stylesheet" href="style.css">
+  <title>AutoSwiper</title>
+  <!-- Latest compiled and minified CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+<!-- Optional theme-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript-->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-<body> 
+<body>
   <h1>AutoSwiper</h1>
-  <main> 
+  <main>
     <nav class="navbar navbar-inverse"></nav>
   </main>
   <div class="container-fluid"></div>
@@ -31,21 +33,20 @@
 </body>
 <div class="container">
   <h1 class="display-1">homepage</h1>
-  <p>Welkom, Op deze pagina kan je op een slenne manier auto's bezichtigen en makkelijk een bod uitbrengen!</p>
+  <p>Welkom, Op deze pagina kan je op een snelle manier auto bezichtigen en makkelijk een bod uitbrengen!</p>
 </div><a href="/get-data"></a>
 <div>
-  <h1 id="AutoTitel">Audi s5</h1>
-  <p id="Kilometerstand">20000KM</p>
-  <p id="Bouwjaar">2016</p>
-  <div class="mijndiv"> <img src="pug.png" alt="auto afbeelding" width="400px"/>
-    <form action="/" method="post" name="doeBod"> 
+  <div class="mijndiv">
+    <form action="/" method="post" name="doeBod">
       <div class="buttons">
-        <button class="Dislike" name="dislike">Dislike</button>
-        <button class="Informatie">Informatie</button>
-        <button class="Like" type="checkbox" onclick="enableTekstveld" name="like" value="1">Like</button>
+        <div class="cardcontainer">
+          <div class="card"><img src="pug.png" width="250px"></div>
+          <button class="but-nope" type="button">X</button>
+          <button class="but-yay" id="like" name="like" value="1" type="button" onclick="knoppenAanzetten(like)">✔</button>
+        </div>
       </div>
-      <input type="text" name="bod" id="bod" value="Ik bied..."/>
-      <input type="submit" name="submit" id="BodKnop" onclick="UpdateEenListing"/>
+      <input id="bod" type="text" name="bod" disabled="disabled" value="bod...">
+      <input id="BodKnop" type="submit" name="submit" disabled="disabled">
     </form>
   </div>
   <div class="NavBar">
@@ -54,73 +55,65 @@
     <button class="Nav">Like</button>
   </div>
 </div>
-
-<h2>Using buttons to vote yes or no</h2>
-
-<div class="floaty">
-  <div class="cardcontainer">
-    <div class="card">Card</div>
-    <button class="but-nope">X</button>
-    <button class="but-yay">✔</button>
-  </div>
-
-  <div class="cardcontainer">
-    <div class="card">Card</div>
-    <button class="but-nope">X</button>
-    <button class="but-yay">✔</button>
-  </div>
-</div>
-
 <script src="tinderesque.js"></script>
 <script>
-
   document.body.addEventListener('nopecard', function(ev) {
-     console.log(ev.detail);
+  console.log(ev.detail);
   });
   document.body.addEventListener('yepcard', function(ev) {
-     console.log(ev.detail);
+  console.log(ev.detail);
   });
   document.body.addEventListener('deckempty', function(ev) {
-     console.log(ev.detail);
+  console.log(ev.detail);
   });
   document.body.addEventListener('cardchosen', function(ev) {
-     console.log(ev.detail);
+  console.log(ev.detail);
   });
-
-
+  
+  
   document.body.addEventListener('nopecard', function(ev) {
-    var container = ev.detail.container;
-    var label = container.querySelector('.nopes');
-    if (label) {
-      var nopes = +container.nopes || 0;
-      nopes++;
-      container.nopes = nopes;
-      label.innerHTML = container.nopes;
-    }
+  var container = ev.detail.container;
+  var label = container.querySelector('.nopes');
+  if (label) {
+  var nopes = +container.nopes || 0;
+  nopes++;
+  container.nopes = nopes;
+  label.innerHTML = container.nopes;
+  }
   });
-
+  
   document.body.addEventListener('yepcard', function(ev) {
-    var container = ev.detail.container;
-    var label = container.querySelector('.yays');
-    if (label) {
-      var yeps = +container.yeps || 0;
-      yeps++;
-      container.yeps = yeps;
-      label.innerHTML = container.yeps;
-    }
+  var container = ev.detail.container;
+  var label = container.querySelector('.yays');
+  if (label) {
+  var yeps = +container.yeps || 0;
+  yeps++;
+  container.yeps = yeps;
+  label.innerHTML = container.yeps;
+  }
   });
-
+  
   document.body.addEventListener('deckempty', function(ev) {
-    var container = ev.detail.container;
-    var list = container.querySelector('.cardlist');
-    var out = '<li class="card current">#1</li>';
-    for (var i = 2; i < 6; i++) {
-      out += '<li class="card">#' + i + '</li>';
-    }
-    list.innerHTML = out;
+  var container = ev.detail.container;
+  var list = container.querySelector('.cardlist');
+  var out = '<li class="card current">#1</li>';
+  for (var i = 2; i < 6; i++) {
+  out += '<li class="card">#' + i + '</li>';
+  }
+  list.innerHTML = out;
   });
-
+  
+  
+  
+  //Luistert naar de knoppen
+  const likeKnop = document.getElementById("like");
+  const bodKnop = document.getElementById("bod");
+  const submitKnop = document.getElementById("BodKnop");
+  
+  function knoppenAanzetten(like) {
+  document.getElementById("bod").disabled = false;
+  document.getElementById("BodKnop").disabled = false;
+  
+  }
 </script>
-
-<script src="mijnbestand.js"> </script>
-<script src="tinderesque.js"> </script>
+<script src="tinderesque.js"></script>

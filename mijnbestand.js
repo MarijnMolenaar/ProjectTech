@@ -13,7 +13,7 @@ const assert = require('assert');
 
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3030
 let db = null;
 
 
@@ -59,14 +59,11 @@ app.post('/index', urlencodedParser, async (req,res) => {
         console.log( "document updated")
       );
 
-
-
       db.collection('autoscollection').updateOne(
         { "_id": ObjectId("6239c8857d83f186a264a2ea") }, 
         { $set: { "bod": req.body.bod } },
         console.log( "document updated")
       );
-
 
       db.collection('autoscollection').updateOne(
         { "_id": ObjectId("6239c8bb7d83f186a264a2eb") }, 
@@ -91,8 +88,6 @@ app.post('/index', urlencodedParser, async (req,res) => {
     const auto = await db.collection('autoscollection').find({}).toArray();
     console.log(auto)
     res.render('index', {auto})
-
-
 
     //const autolijst = await db.collection('autoscollection').find();
 

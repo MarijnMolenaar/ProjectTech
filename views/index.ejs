@@ -37,20 +37,11 @@
 </div><a href="/get-data"></a>
 
 <script>
-    //Luistert naar de knoppen
-    const likeKnop = document.getElementById("like");
-    const bodKnop = document.getElementById("bod");
-    const submitKnop = document.getElementById("BodKnop");
-    
-    function knoppenAanzetten(like) {
-    document.getElementById("bod").disabled = false;
-    document.getElementById("BodKnop").disabled = false;
-  }
+
 </script>
 
 <ul>
   <% auto.forEach(function(auto){ %>
-    
     <div>
       <div class="mijndiv">
         <form action="/index" method="post" name="doeBod">
@@ -68,7 +59,6 @@
           <input id="BodKnop" type="submit" name="submit" disabled="disabled">
         </form>
       </div>
-
   <% }); %>
 </ul>
   <div class="NavBar">
@@ -124,6 +114,39 @@
   }
   list.innerHTML = out;
   });
+
+      //Listens to the likebutton (✔), the textfield and the submitbutton. 
+    //Both the textfield and submitbutton are enabled when the likebutton is clicked.
+    const likeKnop = document.getElementById("like");
+    const bodKnop = document.getElementById("bod");
+    const submitKnop = document.getElementById("BodKnop");
+    
+    function knoppenAanzetten(like) {
+    document.getElementById("bod").disabled = false;
+    //document.getElementById("BodKnop").disabled = false;
+
+    const bodList = document.querySelectorAll('#bod');
+
+
+
+for (let i=0; i<bodList.length; i++) {
+
+bodList[i].disabled = false
+
+}
+
+
+
+const bodKnopList = document.querySelectorAll('#BodKnop');
+
+
+
+for (i=0; i<bodKnopList.length; i++) {
+
+bodKnopList[i].disabled = false
+
+}
+  }
 </script>
 <script src="mijnbestand.js"></script>
 <script src="tinderesque.js"></script>

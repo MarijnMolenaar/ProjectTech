@@ -10,43 +10,35 @@ const { stringify } = require('querystring');
 const slug = require('slug');
 require('mongodb').MongoClient;
 const assert = require('assert'); 
-
-
 const app = express()
+
 const port = process.env.PORT || 3030
 let db = null;
 
-
 app.set('view engine', 'ejs')
-// app.use(express.static('style.css'))
-// app.use(express.static('tinderesque.css'))
 app.use(express.static('public'));
-// app.use(express.static('content'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // create application/json parser
-var jsonParser = bodyParser.json()
+const jsonParser = bodyParser.json()
 
 // create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-// Autos updaten via formulier
+// Update Autos via an form
 app.post('/index', urlencodedParser, async (req,res) => {
     const bod = req.body.bod
     const like = req.body.like
     const query = {};
 
-// // alleen bod en like meegeven ipv alles
+// Requests input from form
     let autoscollection = {
-      //naam: req.body.naam,
       bod: req.body.bod,
-      //bouwjaar: req.body.bouwjaar,
-      //kmstand: req.body.kmstand,
       likes: req.body.likes,
     };
 
-      // Bod en like worden geupdate per db tabel
+      // Bod en like are updated
       const updatesautoprofiel =  db.collection('autoscollection').findOne();
       console.log("POST request doorgekomen");
       console.log(bod);
@@ -70,16 +62,6 @@ app.post('/index', urlencodedParser, async (req,res) => {
         { $set: { "bod": req.body.bod } },
         console.log( "document updated")
       );
-
-      // const whereClause = { id: 6239 };  
-      // const newvalues = { $set: { bod: req.body.bod}};  
-
-      // nodtst.collection("autoscollection").updateOne(whereClause,newvalues,function(err,res){  
-      //   if(error){  
-      //       throw error;  
-      
-      //   }  
-      //   console.log(res.result + "document updated"); 
 })
 
 
@@ -88,10 +70,6 @@ app.post('/index', urlencodedParser, async (req,res) => {
     const auto = await db.collection('autoscollection').find({}).toArray();
     console.log(auto)
     res.render('index', {auto})
-
-    //const autolijst = await db.collection('autoscollection').find();
-
-    
   })
 
   app.post('/', async (req, res) => {
@@ -116,9 +94,6 @@ app.get('/submit-index.html', (req, res) => {
 app.get('/index', (req, res) => {
   res.sendFile('index.ejs', {root: __dirname})
 })  
-
-
-
 
 console.log("JS verbonden, fijne dag!")
 
@@ -285,5 +260,13 @@ app.listen(port, () => {
 //   res.render('tags.html')
 // })
 
-// TODO
-// VOEG 404 toe
+
+      // const whereClause = { id: 6239 };  
+      // const newvalues = { $set: { bod: req.body.bod}};  
+
+      // nodtst.collection("autoscollection").updateOne(whereClause,newvalues,function(err,res){  
+      //   if(error){  
+      //       throw error;  
+      
+      //   }  
+      //   console.log(res.result + "document updated"); 

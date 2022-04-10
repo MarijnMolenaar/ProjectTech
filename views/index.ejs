@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html></html>
+<html>
+
+</html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,12 +10,16 @@
   <link rel="stylesheet" href="style.css">
   <title>AutoSwiper</title>
   <!-- Latest compiled and minified CSS-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 </head>
 <!-- Optional theme-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+  integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
 <!-- Latest compiled and minified JavaScript-->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+  integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
 <body>
   <h1>AutoSwiper</h1>
   <main>
@@ -27,7 +34,7 @@
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <li><a href="/user/me">
-        You are logged in as
+        Ingelogd als
         user@example.com</a></li>
   </ul>
 </body>
@@ -47,103 +54,104 @@
         <form action="/index" method="post" name="doeBod">
           <div class="buttons">
             <div class="cardcontainer">
-              <h2><%= auto.naam %></h2>
-              <p><%= auto.bouwjaar %></p>
-              <p><%= auto.kmstand %> Kilometer</p>
-              <div class="card"><img src="pug.png" width="250px"></div>
+              <h2>
+                <%= auto.naam %>
+              </h2>
+              <p>
+                <%= auto.bouwjaar %>
+              </p>
+              <p>
+                <%= auto.kmstand %> Kilometer
+              </p>
+              <div class="card"><img src="audi.jpg" width="250px"></div>
               <button class="but-nope" type="button">X</button>
-              <button class="but-yay" id="like" name="like" value="1" type="button" onclick="knoppenAanzetten(like)">✔</button>
+              <button class="but-yay" id="like" name="like" value="1" type="button"
+                onclick="knoppenAanzetten(like)">✔</button>
             </div>
           </div>
           <input id="bod" type="text" name="bod" disabled="disabled" value=" <%= auto.bod %>">
-          <input class="submitknop"id="BodKnop" type="submit" name="submit" disabled="disabled">
+          <input class="submitknop" id="BodKnop" type="submit" name="submit" disabled="disabled">
         </form>
       </div>
-  <% }); %>
+      <% }); %>
 </ul>
-  <div class="NavBar">
-    <button class="Nav">Dislike</button>
-    <button class="Nav">Informatie</button>
-    <button class="Nav">Like</button>
-  </div>
 </div>
 <script src="tinderesque.js"></script>
 <script>
-  document.body.addEventListener('nopecard', function(ev) {
-  console.log(ev.detail);
+  document.body.addEventListener('nopecard', function (ev) {
+    console.log(ev.detail);
   });
-  document.body.addEventListener('yepcard', function(ev) {
-  console.log(ev.detail);
+  document.body.addEventListener('yepcard', function (ev) {
+    console.log(ev.detail);
   });
-  document.body.addEventListener('deckempty', function(ev) {
-  console.log(ev.detail);
+  document.body.addEventListener('deckempty', function (ev) {
+    console.log(ev.detail);
   });
-  document.body.addEventListener('cardchosen', function(ev) {
-  console.log(ev.detail);
-  });
-  
-  
-  document.body.addEventListener('nopecard', function(ev) {
-  var container = ev.detail.container;
-  var label = container.querySelector('.nopes');
-  if (label) {
-  var nopes = +container.nopes || 0;
-  nopes++;
-  container.nopes = nopes;
-  label.innerHTML = container.nopes;
-  }
-  });
-  
-  document.body.addEventListener('yepcard', function(ev) {
-  var container = ev.detail.container;
-  var label = container.querySelector('.yays');
-  if (label) {
-  var yeps = +container.yeps || 0;
-  yeps++;
-  container.yeps = yeps;
-  label.innerHTML = container.yeps;
-  }
-  });
-  
-  document.body.addEventListener('deckempty', function(ev) {
-  var container = ev.detail.container;
-  var list = container.querySelector('.cardlist');
-  var out = '<li class="card current">#1</li>';
-  for (var i = 2; i < 6; i++) {
-  out += '<li class="card">#' + i + '</li>';
-  }
-  list.innerHTML = out;
+  document.body.addEventListener('cardchosen', function (ev) {
+    console.log(ev.detail);
   });
 
-      //Listens to the likebutton (✔), the textfield and the submitbutton. 
-    //Both the textfield and submitbutton are enabled when the likebutton is clicked.
-    const likeKnop = document.getElementsByClassName("but-yay");
-    const bodKnop = document.getElementsByClassName("bod");
-    const submitKnop = document.getElementsByClassName("submitknop");
-    
-    function knoppenAanzetten(like) {
+
+  document.body.addEventListener('nopecard', function (ev) {
+    var container = ev.detail.container;
+    var label = container.querySelector('.nopes');
+    if (label) {
+      var nopes = +container.nopes || 0;
+      nopes++;
+      container.nopes = nopes;
+      label.innerHTML = container.nopes;
+    }
+  });
+
+  document.body.addEventListener('yepcard', function (ev) {
+    var container = ev.detail.container;
+    var label = container.querySelector('.yays');
+    if (label) {
+      var yeps = +container.yeps || 0;
+      yeps++;
+      container.yeps = yeps;
+      label.innerHTML = container.yeps;
+    }
+  });
+
+  document.body.addEventListener('deckempty', function (ev) {
+    var container = ev.detail.container;
+    var list = container.querySelector('.cardlist');
+    var out = '<li class="card current">#1</li>';
+    for (var i = 2; i < 6; i++) {
+      out += '<li class="card">#' + i + '</li>';
+    }
+    list.innerHTML = out;
+  });
+
+  //Listens to the likebutton (✔), the textfield and the submitbutton. 
+  //Both the textfield and submitbutton are enabled when the likebutton is clicked.
+  const likeKnop = document.getElementsByClassName("but-yay");
+  const bodKnop = document.getElementsByClassName("bod");
+  const submitKnop = document.getElementsByClassName("submitknop");
+
+  function knoppenAanzetten(like) {
     document.getElementById("bod").disabled = false;
-    //document.getElementById("BodKnop").disabled = false;
-
     const bodList = document.querySelectorAll('#bod');
 
 
 
-for (let i=0; i<bodList.length; i++) {
+    for (let i = 0; i < bodList.length; i++) {
 
-bodList[i].disabled = false
+      bodList[i].disabled = false
 
-}
+    }
 
-const bodKnopList = document.querySelectorAll('#BodKnop');
+    const bodKnopList = document.querySelectorAll('#BodKnop');
 
-for (i=0; i<bodKnopList.length; i++) {
+    for (i = 0; i < bodKnopList.length; i++) {
 
-bodKnopList[i].disabled = false
+      bodKnopList[i].disabled = false
 
-}
+    }
   }
 </script>
 <script src="mijnbestand.js"></script>
 <script src="tinderesque.js"></script>
 
+<!-- Wat ik nog wou doen is het toevoegen van afbeeldingen in de database. Hier ben ik helaas niet aan toegekomen i.v.m. tijdtekort -->
